@@ -1,0 +1,138 @@
+
+// 1 - CADASTRAR UM NOVO USUÁRIO
+axios.post('/auth/register', {
+  name: "Edivaldo",
+  email:"edivaldo@soares.com",
+  password:"ed123"
+})
+.then((res) => {
+  console.log(res.data);
+})
+.catch((err) => {
+  console.log(err.response.data);
+});
+
+
+
+
+
+// 2 - SE AUTENTICAS (GUARDAR O TOKEN GERADO)
+axios.post('/auth/authenticate', {
+  email:"edivaldo@soares.com",
+  password:"ed123"
+})
+.then((res) => {
+  console.log(res.data);
+})
+.catch((err) => {
+  console.log(err.response.data);
+});
+
+
+
+
+
+
+
+
+// 3 - REALIZA O CADASTRO DE UM PROJETO COM UMA TAREFEA SÓ
+axios.post('/projects', {
+	  title: "Consultoria para Gestores de Lojas Online",
+	  description: "Acessoria Financeira",
+	  tasks: [{
+		  title: "Tarefinha",
+		  assignedTo: "5d2fa4b436ea473dac5fae3e",
+	  }]
+},{
+headers: {
+  "Content-Type": 'application/json;charset=UTF-8',
+  "Access-Control-Allow-Origin": "*",
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMzEwMThjMzhlMTZiMzgwYzM3ZTVhMCIsImlhdCI6MTU2MzQ5Mjc4OCwiZXhwIjoxNTYzNTc5MTg4fQ.TUKUGi5p_k8tD9V2v7IyeKl1e9k4i6_GK06tagCMVZE" 
+}
+})
+.then((res) => {
+  console.log(res.data);
+})
+.catch((err) => {
+  console.log(err.response.data);
+});
+
+
+
+
+
+
+
+
+
+// 4 - LISTA TODOS OS PROJETOS
+axios.get('/projects', {
+  headers: {
+   Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMzEwMThjMzhlMTZiMzgwYzM3ZTVhMCIsImlhdCI6MTU2MzQ5Mjc4OCwiZXhwIjoxNTYzNTc5MTg4fQ.TUKUGi5p_k8tD9V2v7IyeKl1e9k4i6_GK06tagCMVZE" 
+  }
+})
+.then((res)  => console.log(res.data))
+.catch((err) => console.log(err.response.data));
+
+
+
+
+
+
+
+
+
+
+
+// 5 - LISTA UM PROJETO ESPEFICISO
+axios.get('/projects/5d31024238e16b380c37e5a1', {
+  headers: {
+   Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMzEwMThjMzhlMTZiMzgwYzM3ZTVhMCIsImlhdCI6MTU2MzQ5Mjc4OCwiZXhwIjoxNTYzNTc5MTg4fQ.TUKUGi5p_k8tD9V2v7IyeKl1e9k4i6_GK06tagCMVZE" 
+  }
+})
+.then((res)  => console.log(res.data))
+.catch((err) => console.log(err.response.data));
+
+
+
+
+
+
+
+
+
+
+
+// 6 - ATUALIZA AS INFORMAÇÕES DE UMA TAREFA ESPECIFICA
+axios.put('/projects/5d31024238e16b380c37e5a1', {
+	  title: "Consultoria Online",
+	  description: "Para gestores de lojas Online",
+	  tasks: [{
+		  title: "Tarefinha ATUALIZADA",
+		  assignedTo: "5d2fa4b436ea473dac5fae3e",
+	  }]
+},{
+headers: {
+    "Content-Type": 'application/json;charset=UTF-8',
+    "Access-Control-Allow-Origin": "*",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMzEwMThjMzhlMTZiMzgwYzM3ZTVhMCIsImlhdCI6MTU2MzQ5Mjc4OCwiZXhwIjoxNTYzNTc5MTg4fQ.TUKUGi5p_k8tD9V2v7IyeKl1e9k4i6_GK06tagCMVZE" 
+}
+})
+.then((res) => {
+  console.log(res.data);
+})
+.catch((err) => {
+  console.log(err.response.data);
+});
+
+
+
+
+// 6 - DELETAR UMA TAREFA ESPECIFICA
+axios.delete('/projects/5d31024238e16b380c37e5a1', {
+  headers: {
+   Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMzEwMThjMzhlMTZiMzgwYzM3ZTVhMCIsImlhdCI6MTU2MzQ5Mjc4OCwiZXhwIjoxNTYzNTc5MTg4fQ.TUKUGi5p_k8tD9V2v7IyeKl1e9k4i6_GK06tagCMVZE" 
+  }
+})
+.then((res)  => console.log(res.data))
+.catch((err) => console.log(err.response.data));
